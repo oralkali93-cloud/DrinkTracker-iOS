@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+# Xcode build
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+DrinkTracker.xcodeproj/xcuserdata/
+DrinkTracker.xcodeproj/project.xcworkspace/xcuserdata/
+# CocoaPods/SPM (not used, but safe)
+.swiftpm/

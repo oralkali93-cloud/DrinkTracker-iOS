@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- העתיקו את שני המפתחות האלה אל Info.plist של הפרויקט,
+     או הזינו אותם תחת Target ▸ Info ▸ Custom iOS Target Properties. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>האפליקציה ניגשת לנתוני הבריאות כדי להציג ולנהל את צריכת המשקאות שלך.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>האפליקציה כותבת לאפל בריאות את כמות המים, הקפאין, האלכוהול והסוכר שצרכת.</string>
+</dict>
+</plist>

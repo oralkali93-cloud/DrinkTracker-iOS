@@ -1,0 +1,52 @@
+# ספק XcodeGen — יוצר את DrinkTracker.xcodeproj אוטומטית.
+# שימוש:  brew install xcodegen  &&  xcodegen generate
+name: DrinkTracker
+
+options:
+  bundleIdPrefix: com.oralkalay
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: YES
+    TARGETED_DEVICE_FAMILY: "1,2"   # iPhone + iPad
+    DEVELOPMENT_TEAM: 9BP8G56Q79
+    CODE_SIGN_STYLE: Automatic
+
+targets:
+  # ---------- אפליקציה ----------
+  DrinkTracker:
+    type: application
+    platform: iOS
+    sources:
+      - path: DrinkTracker
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.oralkalay.DrinkTracker
+        CODE_SIGN_ENTITLEMENTS: DrinkTracker/DrinkTracker.entitlements
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "האפליקציה ניגשת לנתוני הבריאות כדי להציג ולנהל את צריכת המשקאות שלך."
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "האפליקציה כותבת לאפל בריאות את כמות המים, הקפאין, האלכוהול והסוכר שצרכת."
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "מה שתיתי"
+    dependencies:
+      - target: DrinkWidgetExtension
+
+  # ---------- Widget ----------
+  DrinkWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: DrinkWidget
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.oralkalay.DrinkTracker.DrinkWidget
+        CODE_SIGN_ENTITLEMENTS: DrinkWidget/DrinkWidget.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: DrinkWidget/Info.plist
