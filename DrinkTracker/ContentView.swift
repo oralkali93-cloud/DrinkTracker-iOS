@@ -145,13 +145,17 @@ struct HeroCard: View {
         let t = store.totals()
         let prog = t.volume / max(1, store.goalML)
         let reached = t.volume >= store.goalML
+        // גודל מסתגל לפי רוחב המסך (SE ועד Pro Max)
+        let ringSize = min(max(UIScreen.main.bounds.width * 0.56, 180), 240)
         VStack(spacing: 16) {
             ZStack {
                 WaterFillCircle(progress: prog, reached: reached)
-                    .frame(width: 210, height: 210)
+                    .frame(width: ringSize, height: ringSize)
                 VStack(spacing: 2) {
                     Text("\(Int(t.volume))")
-                        .font(.system(size: 46, weight: .heavy, design: .rounded))
+                        .font(.system(size: ringSize * 0.22, weight: .heavy, design: .rounded))
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
                         .foregroundColor(.white)
                     Text("מ\"ל היום").font(.subheadline).foregroundColor(.white.opacity(0.85))
                     Text("\(Int(min(100, prog * 100)))% מהיעד")
